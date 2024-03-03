@@ -1,3 +1,5 @@
+
+const path = require("path");
 const fs = require("fs").promises;
 
 async function findSalesFiles(folderName) {
@@ -7,6 +9,7 @@ async function findSalesFiles(folderName) {
 
   // (2) Read the currentFolder with the `readdir` method. 
   const items = await fs.readdir(folderName, { withFileTypes: true });
+  
 
   // (3) Add a block to loop over each item returned from the `readdir` method using the asynchronous `for...of` loop. 
   for (const item of items) {
@@ -15,7 +18,7 @@ async function findSalesFiles(folderName) {
     if (item.isDirectory()) {
 
       // (5) If the item is a directory, recursively call the function `findSalesFiles` again, passing in the path to the item. 
-      const resultsReturned = await findSalesFiles(`${folderName}/${item.name}`);
+      const resultsReturned = await findSalesFiles(path.join(folderName,item.name));
       results = results.concat(resultsReturned);
     } else {
       // (6) If it's not a directory, add a check to make sure the item name matches *sales.json*.
@@ -29,8 +32,10 @@ async function findSalesFiles(folderName) {
 }
 
 async function main() {
-  const results = await findSalesFiles("stores");
-  console.log(results);
-}
+    const salesDir = path.join(__dirname, "stores");
+  
+    const salesFiles = await findSalesFiles(salesDir);
+    console.log(salesFiles);
+  }
 
 main();
