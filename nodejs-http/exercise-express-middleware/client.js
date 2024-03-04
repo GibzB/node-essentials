@@ -1,10 +1,12 @@
 const http = require('http');
 
 const options = {
-  port: 3000,
+  port: 2000,
   hostname: 'localhost',
   path: '/users',
-  headers: {},
+  headers: {
+    authorization: 'secretpassword'
+  },
 };
 
 const req = http.get(options, (res) => {
