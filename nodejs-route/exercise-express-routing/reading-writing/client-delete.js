@@ -7,7 +7,7 @@ const data = JSON.stringify(productToDelete);
 
 const options = {
   hostname: 'localhost',
-  port: 3000,
+  port: 2000,
   path: `/products/${productToDelete.id}`,
   method: 'DELETE',
   headers: {
