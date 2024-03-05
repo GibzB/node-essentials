@@ -1,0 +1,9 @@
+// node 2-contoso-products-find.js find name '%Blue%'
+
+// node 2-contoso-products-find.js find categoryName '%Bikes%'
+
+// node 2-contoso-products-find.js find-inventory categoryName '%Bikes%' Seattle
+
+// node 2-contoso-products-find.js find-inventory name '%Blue%' Dallas
+
+
